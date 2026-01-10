@@ -30,19 +30,19 @@ de uma requisição através dos limites dos serviços.
 
 ## Propagação {#propagation}
 
-Propagation is the mechanism that moves context between services and processes.
-It serializes or deserializes the context object and provides the relevant
-information to be propagated from one service to another.
+Propagação é o mecanismo que move o contexto entre serviços e processos. Ele
+serializa ou desserializa o objeto de contexto e fornece as informações
+relevantes a serem propagadas de um serviço para outro.
 
-Propagation is usually handled by instrumentation libraries and is transparent
-to the user. In the event that you need to manually propagate context, you can
-use the [Propagators API](/docs/specs/otel/context/api-propagators/).
+A propagação geralmente é gerenciada por bibliotecas de instrumentação e é
+transparente para o usuário. Caso precise propagar o contexto manualmente, você
+pode usar a [API de Propagadores](/docs/specs/otel/context/api-propagators/).
 
-OpenTelemetry maintains several official propagators. The default propagator
-uses the headers specified by the
-[W3C TraceContext](https://www.w3.org/TR/trace-context/) specification.
+O OpenTelemetry mantém vários propagadores oficiais. O propagador padrão utiliza
+os cabeçalhos definidos na especificação
+[W3C TraceContext](https://www.w3.org/TR/trace-context/).
 
-## Example
+## Exemplo {#example}
 
 A service called `Frontend` that provides different HTTP endpoints such as
 `POST /cart/add` and `GET /checkout/` reaches out to a downstream service
@@ -64,7 +64,7 @@ For example:
 00-a0892f3577b34da6a3ce929d0e0e4736-f03067aa0ba902b7-01
 ```
 
-### Traces
+### Rastros {#traces}
 
 As mentioned, context propagation allows traces to build causal information
 across services. In this example, the two calls to the HTTP endpoint
@@ -76,7 +76,7 @@ and Parent ID. With that, it is possible in a [backend](/ecosystem/vendors) like
 
 ![Context propagation example showing trace correlation across services](context-propagation-example.svg)
 
-### Logs
+### Logs {#logs}
 
 OpenTelemetry SDKs are able to automatically correlate logs with traces. This
 means they can inject context (Trace ID, Span ID) into a log record. This not
@@ -84,7 +84,7 @@ only enables you to see logs in the context of the trace and span they belong
 to, but it also enables you to see logs that belong together across service or
 execution unit boundaries.
 
-### Metrics
+### Métricas {#metrics}
 
 In the case of metrics, context propagation enables you to aggregate
 measurements in that context. For example, instead of only looking at the
@@ -98,7 +98,7 @@ combinations of `POST /cart/add > GET /product` and
 | `POST /card/add > GET /product` | 330              | 130ms                 |
 | `GET /checkout > GET /product`  | 40               | 1703ms                |
 
-## Custom Context Propagation
+## Custom Context Propagation {#Custom Context Propagation}
 
 For most use cases, you will find
 [instrumentation libraries or native library instrumentation](/docs/concepts/instrumentation/libraries/)
@@ -182,7 +182,7 @@ interested to help, [learn how you can contribute](/docs/contributing/)!
 
 {{% /alert %}}
 
-## Specification
+## Especificação
 
-To learn more about context propagation, see the
-[Context specification](/docs/specs/otel/context/).
+Para saber mais sobre a Propagação de Contexto, consulte a
+[Especificação de Contexto](/docs/specs/otel/context/).
